@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { searchproduct } from '../redux/slices/productSlice'
+import { clearCart } from '../redux/slices/cartSlice'
 
 
 const Header = ({ insideHome }) => {
@@ -15,6 +16,8 @@ const Header = ({ insideHome }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn")
+    localStorage.removeItem("userMail")
+    dispatch(clearCart())
     alert("Logged out successfully")
     navigate("/login")
   }
